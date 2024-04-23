@@ -1,0 +1,36 @@
+solutions:
+	our agent can pick from any of the available spaces to make its move
+	so, our "solutions" being fed into the fitness function will likely be 
+	the x game states where x is the amount of available spaces.
+	i.e. if a2 is one of the available spaces, one of our solutions will be the game
+	state where the agent chooses space a2 to make its move
+	
+	each solution gets fed into our fitness function and we just choose the move
+	with the highest (or lowest???) fitness value
+
+fitness function:
+	args: solution, solution_idx
+	out: fitness value
+	
+	we need to quantify how good a solution is
+	maybe a point system?
+		a solution gains points for how many of its symbols are in a row
+		a solution loses points for how many of its opponents symbals are in a row
+		maybe gains points if it blocks its opponent	
+
+	if a solution is a winner, our fitness is 1 (or 0?)
+	if a solution is a loser (i.e. its opponent will win next move) its fitness is opposite the winning fitness
+	else, quantify our solution's fitness somehow
+	
+	return fitness
+
+
+
+Then we just need a way to display the agents choice
+	maybe wrap everything in a loop and have the agent play a whole game vs a human? or another agent?
+	
+other thoughts:
+	maybe change agressiveness of our fitness function by generation?
+	i.e. each compare results of fitness function that prioritizes winning over blocking
+	its opponent and vice versa
+
