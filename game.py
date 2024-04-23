@@ -94,7 +94,6 @@ def fitness_func(ga, solution, solution_idx):
     
     x, y = check_for_blocks()
     if (x != -1):
-        print(f"x: {x} y: {y}")
         if (temp_gs[x][y]):
             fitness += 30
 
@@ -137,7 +136,6 @@ def callback_generation(ga_instance):
         
 
 def display_game_state():
-    #print(gameState)
     for row in gameState:
         count = 0
         for x in row:
@@ -153,23 +151,13 @@ def display_game_state():
             else:
                 print('')
             count += 1
-        # print(*x, sep=' | ')
+    print('---------------')
 
 def take_turn(agent_symbol):
     global gameState
     #this function will take the current gameState, generate solutions and run our GA
     #after we have determined the best solution, update gameState and move on
     Solutions = []
-    #generate solutions
-    # for row in range(0, len(gameState)):
-    #     for x in range(0, len(gameState)):
-    #         if gameState[row][x] == 0:
-    #             #use this as one of our solutions, copy this gameState and add it to our list of solutions
-    #             temp_gs = list(gameState)
-    #             temp_gs[row][x]=agent_symbol
-    #             flattened_list = [item for sublist in temp_gs for item in sublist]
-    #             Solutions.append(flattened_list)
-    #             temp_gs.clear()
 
     flattened_list = [item for sublist in gameState for item in sublist]
     for x in range(len(flattened_list)):
@@ -186,7 +174,6 @@ def take_turn(agent_symbol):
                            mutation_type=None,
                             )
     solution = ga_instance.best_solution()[0]
-    print(solution)
     gameState = [solution[0:3],solution[3:6],solution[6:9]]
     return
 
@@ -207,7 +194,7 @@ def runGame(size):
             taken = False
             while(not taken):
                 if(controlling):
-                    str = input("Input desired space index (space-separated): ")
+                    str = input("Input desired space index (space-separated, 0-index, row col): ")
                     x, y = str.split(' ')
                     if (int(x) < 0 or int(x) > 2 or int(y) < 0 or int(y) > 2):
                         print("Keep the input between 0 and 2 dummy!")
