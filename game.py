@@ -97,6 +97,12 @@ def fitness_func(ga, solution, solution_idx):
         if (temp_gs[x][y]):
             fitness += 30
 
+    # Prioritize corners
+    corner_positions = [(0, 0), (0, 2), (2, 0), (2, 2)]
+    for position in corner_positions:
+        if temp_gs[position[0]][position[1]] == 1:
+            fitness += 10
+
     # Check rows
     for row in temp_gs:
         y = np.array(row)
@@ -186,7 +192,7 @@ def runGame(size):
     agent_symbol = 1
     opponent_symbol = 2
     agents_turn = False
-    controlling = True
+    controlling = False
     while game_won(gameState) == False:
         if(agents_turn):
             take_turn(agent_symbol)
