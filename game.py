@@ -175,6 +175,8 @@ def take_turn(agent_symbol):
             copy[x] = 1
             Solutions.append(copy)
 
+    if len(Solutions) == 0:
+        return
     ga_instance = pygad.GA(num_generations = 2,
                            num_parents_mating = 1,
                            fitness_func=fitness_func,
@@ -213,13 +215,27 @@ def runGame(size):
                     else:
                         print("Occupied space dummy!")
                 else:
-                    taken = False
-                    while(not taken):
-                        x = random.randint(0 , 2)
-                        y = random.randint(0 , 2)
-                        if(gameState[x][y]==0):
-                            gameState[x][y] = opponent_symbol
-                            taken = True
+                    # taken = False
+                    # while(not taken):
+                    #     x = random.randint(0 , 2)
+                    #     y = random.randint(0 , 2)
+                    #     if(gameState[x][y]==0):
+                    #         gameState[x][y] = opponent_symbol
+                    #         taken = True
+                    for row in gameState:
+                        for x in row:
+                            if x == 1:
+                                x = 2
+                            else:
+                                x = 2
+                    take_turn(agent_symbol)
+                    for row in gameState:
+                        for x in row:
+                            if x == 1:
+                                x = 2
+                            else:
+                                x = 2
+                    Taken = True
         if agents_turn == True:
             agents_turn = False
         else:
