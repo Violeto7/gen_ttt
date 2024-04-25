@@ -90,8 +90,8 @@ def fitness_func(ga, solution, solution_idx):
     if(game_won(temp_gs) == True):######this is fine because if this is true we alwasys win
         return 300
     
-    if(check_empty() and temp_gs[1][1] == 1):
-        return 50
+    # if(check_empty() and temp_gs[1][1] == 1):
+    #     return 50
     
     fitness = 0
     
@@ -196,7 +196,7 @@ def runGame(size):
     gameState = [[0 for x in range(size)] for y in range(size)] # make our nxn grid
     agent_symbol = 1
     opponent_symbol = 2
-    agents_turn = False
+    agents_turn = True
     controlling = False
     while game_won(gameState) == False:
         if(agents_turn):
@@ -215,27 +215,27 @@ def runGame(size):
                     else:
                         print("Occupied space dummy!")
                 else:
-                    # taken = False
-                    # while(not taken):
-                    #     x = random.randint(0 , 2)
-                    #     y = random.randint(0 , 2)
-                    #     if(gameState[x][y]==0):
-                    #         gameState[x][y] = opponent_symbol
-                    #         taken = True
-                    for row in gameState:
-                        for x in row:
-                            if x == 1:
-                                x = 2
-                            else:
-                                x = 2
-                    take_turn(agent_symbol)
-                    for row in gameState:
-                        for x in row:
-                            if x == 1:
-                                x = 2
-                            else:
-                                x = 2
-                    Taken = True
+                    taken = False
+                    while(not taken):
+                        x = random.randint(0 , 2)
+                        y = random.randint(0 , 2)
+                        if(gameState[x][y]==0):
+                            gameState[x][y] = opponent_symbol
+                            taken = True
+                    # for row in gameState:
+                    #     for x in row:
+                    #         if x == 1:
+                    #             x = 2
+                    #         else:
+                    #             x = 2
+                    # take_turn(opponent_symbol)
+                    # for row in gameState:
+                    #     for x in row:
+                    #         if x == 1:
+                    #             x = 2
+                    #         else:
+                    #             x = 2
+                    # taken = True
         if agents_turn == True:
             agents_turn = False
         else:

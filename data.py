@@ -30,12 +30,13 @@ def run_file():
     plt.bar(categories, counts, color=['blue', 'green', 'red'])
     plt.xlabel('Winners')
     plt.ylabel('Number of Wins')
-    plt.title('Stage 4 (Going Second)')
+    plt.title('Stage 4')
     plt.show()
 
-    with open('results.csv', 'a', newline='') as csvfile:
-        count = [x_win_count]
-        writer = csv.writer(csvfile)
-        writer.writerow(count)
+    print(x_win_count)
+    # with open('results.csv', 'a', newline='') as csvfile:
+    #     count = [x_win_count]
+    #     writer = csv.writer(csvfile)
+    #     writer.writerow(count)
 
 run_file()
