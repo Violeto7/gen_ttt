@@ -34,3 +34,17 @@ other thoughts:
 	i.e. each compare results of fitness function that prioritizes winning over blocking
 	its opponent and vice versa
 
+STAGES FOR DATA
+	_2 = going second
+
+	STAGE 1:
+		Completely Random
+
+	STAGE 2:
+		Low functionality (does not check for blocks or prioritize corners)
+	
+	STAGE 3:
+		Medium functionality (checks for blocks, does not prioritize corners)
+
+	STAGE 4:
+		High functionality (checks for blocks and prioritizes corners)

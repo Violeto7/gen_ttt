@@ -2,6 +2,9 @@ import os
 import numpy as np
 import pygad
 import random
+import warnings
+
+warnings.filterwarnings("ignore")
 
 who_won = '-1'
 def checkRows(board):
@@ -185,7 +188,7 @@ def take_turn(agent_symbol):
 
 def runGame(size):
     size = 3
-    print(f"Running game with size {size}")
+    # print(f"Running game with size {size}")
     global gameState 
     global who_won
     gameState = [[0 for x in range(size)] for y in range(size)] # make our nxn grid
@@ -221,9 +224,9 @@ def runGame(size):
             agents_turn = False
         else:
             agents_turn = True
-        display_game_state()
+        # display_game_state()
         if check_for_draw():
-            print("The game was a draw!")
+            # print("The game was a draw!")
             break
         
     if who_won == '-1':
